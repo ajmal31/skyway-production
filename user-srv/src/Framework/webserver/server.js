@@ -10,8 +10,7 @@ const serverConfig=(server,config)=>{
     }
     return {
         startServer
-    }
-    
+    }   
 }
 
 export default serverConfig
