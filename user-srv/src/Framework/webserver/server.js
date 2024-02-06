@@ -3,7 +3,6 @@ const serverConfig=(server,config)=>{
     const startServer=()=>{
 
         server.listen(config.port,()=>{
-            console.log("added server running script")
             console.log(`user Service Listening on port ${config.port}`)
         })
 

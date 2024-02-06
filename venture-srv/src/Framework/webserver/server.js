@@ -4,7 +4,6 @@ const serverConfig=(server,config)=>{
 
         server.listen(config.port,()=>{
 
-            console.log("added message in venture-service")
             console.log(`venture Service Listening on port ${config.port}🌈🌛`)
         })
 
