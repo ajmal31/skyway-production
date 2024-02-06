@@ -1,7 +1,9 @@
 name: test-user-srv
 
 on:
-  pull_request
+  pull_request:
+    paths:
+      - "user-srv/**"
   
 jobs:
   build:
