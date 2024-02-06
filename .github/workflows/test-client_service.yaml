@@ -1,7 +1,9 @@
 name: test-client-srv
 
 on:
-  pull_request
+  pull_request:
+    paths:
+      - "skyway-client/**"
 
 jobs:
   build:
