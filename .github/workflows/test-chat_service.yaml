@@ -1,7 +1,9 @@
 name: test-chat-srv
 
 on:
-  pull_request
+  pull_request:
+    paths:
+      - "chat-srv/**"
 
 jobs:
   build:
