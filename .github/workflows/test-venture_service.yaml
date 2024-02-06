@@ -2,6 +2,8 @@ name : test-venture-srv
 
 on:
   pull_request:
+    paths:
+      - "venture-srv/**"
 
 jobs:
   build:
