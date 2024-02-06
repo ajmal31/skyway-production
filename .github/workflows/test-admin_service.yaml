@@ -1,7 +1,9 @@
 name: test-admin-srv
 
 on:
-  pull_request
+  pull_request:
+    paths:
+      - "admin-srv/**"
 
 jobs:
   build:
