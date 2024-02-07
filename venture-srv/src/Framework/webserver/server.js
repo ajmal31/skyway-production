@@ -2,9 +2,10 @@ const serverConfig=(server,config)=>{
 
     const startServer=()=>{
 
-        server.listen(config.port,()=>{
+        // server.listen(config.port,()=>{
+            server.listen(3001,()=>{
 
-            console.log(`venture Service Listening on port ${config.port}🌈🌛`)
+            console.log(`venture Service Listening on port ${config?.port??"hri 3001"}🌈🌛`)
             console.log("venture service is started ci/cd is working fine😻😻😹")
         })
 
