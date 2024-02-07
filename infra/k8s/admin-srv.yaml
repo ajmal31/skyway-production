@@ -17,7 +17,7 @@ spec:
       restartPolicy: Always
       containers:
         - name: admin-srv
-          image: muhammedajmal/skyway-admin-srv
+          image: muhammedajmal/skyway-admin-srv:latest
 ---
 apiVersion: v1
 kind: Service
