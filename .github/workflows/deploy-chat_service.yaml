@@ -1,0 +1,37 @@
+name: deploy-chat-srv.yaml
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "chat-srv/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest@v2
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd chat-srv && docker build -t muhammedajmal/skyway-chat-srv .
+      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        env:
+          DOCKER_USERNAME: ${{DOCKER_USERNAME}}
+          DOCKER_PASSWORD: ${{DOCKER_PASSWORD}}
+      - run: docker push muhammedajmal/skyway-chat-srv
+      - uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN}}
+      - run: doctl kubernetes cluster kubeconfig save skyway-k8s-cluster-digital-ocean
+      - run : kubectl rollout restart deployment chat-srv-deployment
+      
+
+
+
+
+
+
+
+
+
+
+
