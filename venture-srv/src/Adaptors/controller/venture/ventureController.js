@@ -21,7 +21,7 @@ const ventureController = (repositoryInterface, repositoryImplements, serviceInt
   //service interface and implements assign to a service
   const service = serviceInterface(ServiceImplements())
 
-
+ 
   //POST METHODS
 
   const register = async (req, res) => {
