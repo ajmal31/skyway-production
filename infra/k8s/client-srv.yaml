@@ -17,7 +17,7 @@ spec:
       restartPolicy: Always
       containers:
         - name: client-srv
-          image: muhammedajmal/skyway-client-srv:v36
+          image: muhammedajmal/skyway-client-srv
 ---
 apiVersion: v1
 kind: Service
