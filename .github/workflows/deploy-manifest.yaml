@@ -16,5 +16,5 @@ jobs:
         with:
           token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN}}
       - run: doctl kubernetes cluster kubeconfig save skyway-k8s-cluster-digital-ocean
-      - run : cd infra/k8s && kubectl apply -f .
+      - run : kubectl apply -f infra/k8s
       
