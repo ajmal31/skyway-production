@@ -7,7 +7,7 @@ const server = async(app: any, port: any) => {
         else{
 
             console.log(`Chat service listening on Port ${temp_port}`);
-            console.log("chat service is started ci/cd is working fine")
+            console.log("chat service is started ci/cd is working fine💴💹💹")
         }
     });
     //invkoking socket configrations
