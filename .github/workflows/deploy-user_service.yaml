@@ -1,0 +1,33 @@
+name: deploy-user-srv
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "user-srv/**"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Create .env file
+        run: |
+          echo "USER_DATABASE_URL=${{ secrets.USER_DATABASE_URL }}" >> .env
+      - run: cd user-srv && docker build -t muhammedajmal/skyway-user-srv .
+      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        env:
+          DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      - run: docker push muhammedajmal/skyway-user-srv
+      - uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN}}
+      - run: doctl kubernetes cluster kubeconfig save skyway-k8s-cluster-digital-ocean
+      - run: kubectl rollout restart deployment user-srv-deployment
+
+
+
+
+
+      

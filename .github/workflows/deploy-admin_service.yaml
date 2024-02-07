@@ -1,0 +1,29 @@
+name: deploy-admin-srv.yaml
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "admin-srv/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Create .env file
+        run: |
+          echo "ADMIN_DATABASE_URL=${{ secrets.ADMIN_DATABASE_URL }}" >> .env
+      - run: cd admin-srv && docker build -t muhammedajmal/skyway-admin-srv .
+      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        env:
+          DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      - run: docker push muhammedajmal/skyway-admin-srv
+      - uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN}}
+      - run: doctl kubernetes cluster kubeconfig save skyway-k8s-cluster-digital-ocean
+      - run : kubectl rollout restart deployment admin-srv-deployment
+      

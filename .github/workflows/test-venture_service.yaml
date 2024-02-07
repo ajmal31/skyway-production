@@ -1,0 +1,14 @@
+name : test-venture-srv
+
+on:
+  pull_request:
+    paths:
+      - "venture-srv/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd venture-srv && npm install
+    
