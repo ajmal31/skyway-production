@@ -15,8 +15,8 @@ jobs:
       - run: cd chat-srv && docker build -t muhammedajmal/skyway-chat-srv .
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         env:
-          DOCKER_USERNAME: ${{DOCKER_USERNAME}}
-          DOCKER_PASSWORD: ${{DOCKER_PASSWORD}}
+          DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       - run: docker push muhammedajmal/skyway-chat-srv
       - uses: digitalocean/action-doctl@v2
         with:
