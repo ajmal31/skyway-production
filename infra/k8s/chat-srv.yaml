@@ -17,7 +17,7 @@ spec:
       restartPolicy: Always
       containers:
         - name: chat-srv
-          image: muhammedajmal/skyway-chat-srv:latest
+          image: muhammedajmal/skyway-chat-srv
 ---
 apiVersion: v1
 kind: Service
