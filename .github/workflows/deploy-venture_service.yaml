@@ -14,10 +14,10 @@ jobs:
       - uses: actions/checkout@v2
       - name: Create .env file
         run: |
-          echo "MONGO_URI=${{ secrets.VENTURE_SRV_MONGO_URI }}" >> user-srv/.env
-          echo "JWT_SECRETKEY=${{ secrets.JWT_SECRETKEY }}" >> user-srv/.env
-          echo "JWT_ADMIN_SECRET_KEY=${{ secrets.JWT_ADMIN_SECRET_KEY }}" >> user-srv/.env
-          echo "JWT_USER_SECRET_KEY=${{ secrets.JWT_USER_SECRET_KEY }}" >> user-srv/.env
+          echo "MONGO_URI=${{ secrets.VENTURE_SRV_MONGO_URI }}" >> venture-srv/.env
+          echo "JWT_SECRETKEY=${{ secrets.JWT_SECRETKEY }}" >> venture-srv/.env
+          echo "JWT_ADMIN_SECRET_KEY=${{ secrets.JWT_ADMIN_SECRET_KEY }}" >> venture/.env
+          echo "JWT_USER_SECRET_KEY=${{ secrets.JWT_USER_SECRET_KEY }}" >> venture/.env
       - run: cd venture-srv && docker build -t muhammedajmal/skyway-venture-srv .
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         env:
