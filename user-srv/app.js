@@ -9,7 +9,6 @@ import env from "./src/config/env.js"
 import consumer from "./src/Message-broker/consumer/consumer.js"
  
 
-
 //create instance of Express 
 const app=express()
 
