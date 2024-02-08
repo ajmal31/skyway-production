@@ -10,10 +10,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v2.0
+        with:
+          envkey_MONGO_URI: ${{ secrets.USER_SRV_MONGO_URI }}
+          directory: user-srv
+          file_name: .env
+          fail_on_empty: false
+          sort_keys: false
       - uses: actions/checkout@v2
-      # - name: Create .env file
-      #   run: |
-      #     echo "USER_DATABASE_URL=${{ secrets.USER_DATABASE_URL }}" >> .env
       - run: cd user-srv && docker build -t muhammedajmal/skyway-user-srv .
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         env:
