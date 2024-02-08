@@ -14,6 +14,8 @@ jobs:
       - name: Create .env file
         run: |
           echo "MONGO_URI=${{ secrets.USER_SRV_MONGO_URI }}" >> user-srv/.env
+          echo "AWS_SECRETKEY=${{ secrets.AWS_SECRETKEY }}" >> user-srv/.env
+          echo "AWS_ACCESSKEY=${{ secrets.AWS_ACCESSKEY }}" >> user-srv/.env
       - run: cd user-srv && docker build -t muhammedajmal/skyway-user-srv .
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         env:
