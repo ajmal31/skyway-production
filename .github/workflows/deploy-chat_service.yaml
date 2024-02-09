@@ -12,6 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Create .env file
+        run: |
+          echo "MONGO_URI=${{ secrets.chat_SRV_MONGO_URI }}" >> chat-srv/.env
+          echo "VENTURE_SRV_TOKEN_SECRET_KEY=${{ secrets.JWT_SECRETKEY }}" >> chat-srv/.env
+          echo "USER_SRV_TOKEN_SECRET_KEY=${{ secrets.JWT_USER_SECRET_KEY }}" >> chat-srv/.env
       - run: cd chat-srv && docker build -t muhammedajmal/skyway-chat-srv .
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         env:
