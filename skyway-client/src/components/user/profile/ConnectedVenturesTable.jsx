@@ -15,34 +15,6 @@ const ConnectedVentureTable = ({ data }) => {
 
 
 
-    // const makePayment = async (ventureName, vid) => {
-
-    //     console.log('venturename', ventureName, vid)
-    //     const stripe = await loadStripe(env.STRIPE_SECRET_ID);
-
-    //     const apidetails = {
-
-    //         method: 'post',
-    //         url: PAYMENT_SRV_BASE_URL + "payment-intent",
-    //         data: { ventureName: ventureName, vid: vid },
-    //         token: true,
-    //         to: "user"
-    //     }
-
-    //     const response = await dispatch(fetchData(apidetails))
-    //     console.log("payment response", response)
-
-    //     const result = await stripe.redirectToCheckout({
-    //         sessionId: response.payload.data.sessionId
-    //     })
-    //     console.log('result finally', result)
-    //     // if(result.error){
-    //     //     console.log('error occured while intgrationg stripe',result.error.message)
-    //     // }
-
-
-    // }
-
     return (
 
         <div className="font-outfit  text-gray-400 mb-14 rounded-2xl bg-secondory xl:w-[1110px] lg:w-[900px] md:w-full sm:w-[1000px] min-[200px]:w-[1000px] ">
