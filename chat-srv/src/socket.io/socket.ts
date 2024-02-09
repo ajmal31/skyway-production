@@ -2,7 +2,7 @@ import { Server } from "socket.io"
 
 //Helper if it's needed
 import { makeMessage, incrementUnreadcount } from "../Helper/chatHelper"
-
+ 
 
 const socketConfguration = (server: any) => {
 
