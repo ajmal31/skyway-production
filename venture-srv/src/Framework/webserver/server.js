@@ -5,7 +5,7 @@ const serverConfig=(server,config)=>{
         server.listen(config.port,()=>{
            
 
-            console.log(`venture Service Listening on port ${config?.port??"hri 3001"}🌈🌛`)
+            console.log(`venture Service Listening on port ${config?.port??"hri 3001okayyyyyyy"}🌈🌛`)
             console.log("venture service is started ci/cd is working fine😻😻😹")
         })
 
