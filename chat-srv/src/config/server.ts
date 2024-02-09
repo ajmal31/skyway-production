@@ -1,6 +1,9 @@
 import { Application } from "express"
 import socketConfguration from "../socket.io/socket";
+
+
 const server = async(app: any, port: any) => {
+    
     const temp_port:number=5003
     let response=app.listen(temp_port, (err?: any) => {
         if (err) console.error(`Error starting the server: ${err}`);
