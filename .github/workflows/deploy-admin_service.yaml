@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      # - name: Create .env file
-      #   run: |
-      #     echo "ADMIN_DATABASE_URL=${{ secrets.ADMIN_DATABASE_URL }}" >> .env
+      - name: Create .env file
+        run: |
+          echo "MONGO_URI=${{ secrets.ADMIN_SRV_MONGO_URI }}" >> admin-srv/.env
       - run: cd admin-srv && docker build -t muhammedajmal/skyway-admin-srv .
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         env:
