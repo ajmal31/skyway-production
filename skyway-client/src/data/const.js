@@ -13,4 +13,5 @@ export const CHAT_SRV_BASE_URL=`${baseUrl}api/chat-srv/`
 export const CHAT_SRV_SOCKET_URL = "https://flyway.website";
 // export const CHAT_SRV_SOCKET_URL = "https://flyway.website/socket.io/";
 // export const CHAT_SRV_SOCKET_URL="http://localhost:4003"
+
 export const PAYMENT_SRV_BASE_URL=`https://flyway.website/api/payment-srv/`
