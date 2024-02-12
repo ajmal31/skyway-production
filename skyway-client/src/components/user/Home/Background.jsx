@@ -68,7 +68,7 @@ const Background = () => {
 
       }
       const response = await dispatch(fetchData(apiDetails))
-      console.log("all contries", response)
+     
       let countries = response?.payload?.data?.response?.countries
       setArr(countries)
     } catch (error) {
@@ -80,7 +80,7 @@ const Background = () => {
   //Get top 5 ventures
   const getTopVentures = async () => {
 
-    console.log("is it enter")
+    
     const apiDetails = {
       method: 'post',
       url: VENTURE_SRV_BASE_URL + "getAllVentures",
@@ -90,14 +90,13 @@ const Background = () => {
     }
     const response = await dispatch(fetchData(apiDetails))
     const { Allventures } = response?.payload?.data?.response
-    // console.log("all venture oh home filter 5 items",Allventures)
+
 
     let k = Allventures.slice(0, 5)
     setTopVentures(k)
 
   }
 
-  console.log("vnture state", topVentures)
   //useEffect
   useEffect(() => {
 
