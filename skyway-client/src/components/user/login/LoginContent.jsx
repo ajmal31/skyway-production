@@ -42,7 +42,6 @@ const LoginContent = () => {
                 
             }
             const res = await dispatch(fetchData(obj))
-            console.log('after login',res)
             const { message } = res.payload.data
             if (message === "user Logged in succesful") {
                 
