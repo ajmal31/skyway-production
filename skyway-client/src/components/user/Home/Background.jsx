@@ -141,7 +141,7 @@ const Background = () => {
                 {/* Text section */}
 
                 <div className=" h-full flex lg:items-center  text-gray-300 pb-14   ">
-                  <div className="flex flex-col sm:justify-center sm:items-center  lg:j ustify-start lg:items-start ">
+                  <div className="flex flex-col sm:justify-center sm:items-center  lg:justify-start lg:items-start ">
                     <div className="text-gray-300 font-bold leading-tight sm:w-2/3 lg:w-full  font-Outfit tracking-wider sm:text-center lg:text-start  text-4xl">
                       Discover <br /> Opportunities to Transform  Your <br /> Career and Achieve <br /> Success
                     </div>
