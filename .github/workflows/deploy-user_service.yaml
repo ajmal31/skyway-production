@@ -11,9 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      # - name: Create .env file
-      #   run: |
-      #     echo "USER_DATABASE_URL=${{ secrets.USER_DATABASE_URL }}" >> .env
+      - name: Create .env file
+        run: |
+          echo "MONGO_URI=${{ secrets.USER_SRV_MONGO_URI }}" >> user-srv/.env
+          echo "AWS_SECRETKEY=${{ secrets.AWS_SECRETKEY }}" >> user-srv/.env
+          echo "AWS_ACCESSKEY=${{ secrets.AWS_ACCESSKEY }}" >> user-srv/.env
       - run: cd user-srv && docker build -t muhammedajmal/skyway-user-srv .
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         env:
