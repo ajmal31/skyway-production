@@ -61,7 +61,6 @@ const Contact = ({ chats, roll, socket }) => {
         }
 
         const response = await dispatch(fetchData(apiDetails))
-        console.log("response of the all chats",response)
         setAllChats(response?.payload?.data?.response)
 
     }
@@ -69,6 +68,8 @@ const Contact = ({ chats, roll, socket }) => {
     useEffect(() => {
         getAllChats()
     }, [data?.count])
+
+    console.log("all chats",allChats)
 
     return (
         <div>

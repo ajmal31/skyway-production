@@ -181,6 +181,9 @@ const chatHelper = () => {
         let response = await chatSchema_1.chatSchema.countDocuments({ [user]: userId, [key]: { $ne: 0 } });
         return response;
     };
+    // const updateProfile=async (value:string,_id:string)=>{
+    //     const response=await chatersSchema.updateOne({"data.$_id":_id},{$set:})
+    // }
     return {
         takeUnReadChatsCount,
         readedAllMessages,

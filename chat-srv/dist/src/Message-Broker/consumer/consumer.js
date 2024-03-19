@@ -21,6 +21,10 @@ const consumer = async () => {
                 const response = await (0, chatHelper_2.insertChatersDetails)(message);
                 return channel.ack(data);
             }
+            else if (message?.method === "update-profile") {
+                console.log("messag", message.value);
+                return '';
+            }
             channel.ack(data);
         }
         else

@@ -261,8 +261,6 @@ const Uprofile = () => {
 
     var result = []
     if (userCred && connectedVentures) {
-        console.log('user', userCred)
-        console.log('venture', connectedVentures)
 
         for (const key of userCred.ventures) {
 

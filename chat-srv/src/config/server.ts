@@ -7,8 +7,8 @@ const server = async(app: any, port: any) => {
     const temp_port:number=5003
     let response=app.listen(temp_port, (err?: any) => {
         if (err) console.error(`Error starting the server: ${err}`);
+        
         else{
-
             console.log(`Chat service listening on Port ${temp_port}`);
             console.log("chat service is started ci/cd is working fine💴💹💹")
         }

@@ -6,8 +6,7 @@ const userRepositoryImplements = () => {
 
     //Find a Partiulcar user
     const findUser = async ({ key, val, neVal = null }) => {
-        console.log('cred', key, val, neVal)
-
+        
         const query_one = {
             [key]: val
 
