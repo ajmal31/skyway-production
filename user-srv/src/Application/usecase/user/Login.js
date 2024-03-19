@@ -5,6 +5,8 @@ const userLogin=async(dbrepo,service,email,password)=>{
         val:email
     }
     const user=await dbrepo?.userExist(loginCredentials)
+
+    console.log("hhhhhhhhh",user)
     
     let response={
         userExist:false,

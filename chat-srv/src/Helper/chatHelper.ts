@@ -234,6 +234,11 @@ const chatHelper = () => {
 
 
     }
+    // const updateProfile=async (value:string,_id:string)=>{
+            
+    //     const response=await chatersSchema.updateOne({"data.$_id":_id},{$set:})
+
+    // }
 
 
     return {

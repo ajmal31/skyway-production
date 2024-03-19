@@ -9,6 +9,7 @@ const expressConfig_1 = __importDefault(require("./src/config/expressConfig"));
 const RoutesConfig_1 = __importDefault(require("./src/config/RoutesConfig"));
 const connection_1 = __importDefault(require("./src/config/db/connection"));
 const server_1 = __importDefault(require("./src/config/server"));
+const consumer_1 = __importDefault(require("./src/Message-Broker/consumer/consumer"));
 const http_1 = __importDefault(require("http"));
 //Create Express Instance
 const app = (0, express_1.default)();
@@ -18,7 +19,7 @@ const httpServer = http_1.default.createServer(app);
 //Invoking Routes Config
 (0, RoutesConfig_1.default)(app, express_1.default);
 //RabbitMQ consumer
-// consumer()
+(0, consumer_1.default)();
 //Invokign Database configuration function
 (0, connection_1.default)(env_1.default.MONGO_URI);
 //server

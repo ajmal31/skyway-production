@@ -94,7 +94,6 @@ const ChatContent = ({ roll,socket }) => {
 
 
         //return chat id (Game Changer😍)
-
         return response_chat?.payload?.data?._id
     };
 

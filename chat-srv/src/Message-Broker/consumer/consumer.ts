@@ -21,6 +21,9 @@ const consumer = async () => {
                 return channel.ack(data)
 
 
+            }else if(message?.method==="update-profile"){
+                console.log("messag",message.value)
+                return ''
             }
             channel.ack(data)
 

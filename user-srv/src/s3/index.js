@@ -5,8 +5,8 @@ import {v4} from "uuid"
 
 const s3 = new S3Client({
   credentials: {
-    accessKeyId: env.AWS_ACCESSKEY,
-    secretAccessKey: env.AWS_SECRETKEY,
+    accessKeyId: env.AWS_ACCESSKEY ,
+    secretAccessKey: env.AWS_SECRETKEY ,
   },
   region: "eu-north-1",
 });

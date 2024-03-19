@@ -36,7 +36,7 @@ const UsersTable = (prop) => {
     }, [])
 
     const handleAllow = async (uid) => {
-         console.log("handle allow clicked ")
+
         const apiDetails = {
             method: 'post',
             url: USER_SRV_BASE_URL + '/changeUserStatus',
@@ -57,6 +57,7 @@ const UsersTable = (prop) => {
 
     const createChat=async(uid)=>{
         //chat service api details
+        
         const api_one = {
             method: 'post',
             url: CHAT_SRV_BASE_URL + 'createChat/venture',
@@ -64,7 +65,8 @@ const UsersTable = (prop) => {
             token: true,
             to: 'venture'
         }
-        //venture service api details
+
+        //Take venture data and add to chat-service in to chaters collections
         const api_two = {
             method: 'post',
             url: VENTURE_SRV_BASE_URL + 'getVentureUpdateChat/venture',
@@ -72,7 +74,7 @@ const UsersTable = (prop) => {
             token: true,
             to: 'venture'
         }
-        //User service api details
+        //Take users data and add to chat-service in to chaters collections
         const api_three = {
             method: 'post',
             url: USER_SRV_BASE_URL + 'getUserUpdateChat/venture',
@@ -80,24 +82,40 @@ const UsersTable = (prop) => {
             token: true,
             to: 'venture'
         }
+
+
+        try{
+
+        let [chatCreated,ventureData,userData]=await Promise.all([
+
+                dispatch(fetchData(api_one)),
+                dispatch(fetchData(api_two)),
+                dispatch(fetchData(api_three))
+            ])
+
+            navigate('/venture/chats')
+
+        }catch(error){
+
+               console.log("error found while creating chat",error)
+
+        }
         //creating chat
-        let chatCreated = await dispatch(fetchData(api_one))
+        // let chatCreated = await dispatch(fetchData(api_one))
         //take data from venture Hear receiver id represing the 
         //venture( hear will be only boolen while RabbitMQ make
         // request so handle it using that boolean)👆
 
         //This api call taken venture details based on the id and 
         //update to chat service👇
-        let ventureData = await dispatch(fetchData(api_two))
+        // let ventureData = await dispatch(fetchData(api_two))
 
         //This api call take user details based ont he id and 
         //update to chat service👇
-        let userData = await dispatch(fetchData(api_three))
-        console.log('response ',chatCreated)
-        console.log('response ',ventureData)
-        console.log('response ',userData)
+        // let userData = await dispatch(fetchData(api_three))
+        
 
-        navigate('/venture/chats')
+       
 
 
 
