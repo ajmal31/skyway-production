@@ -52,7 +52,8 @@ import AventureDetails from "./pages/admin/ventureDetails/VentureDetails.jsx"
 
 
 // Chat Related Imports
-const Chat=lazy(()=>import('../src/pages/chat/Chat'))
+// const Chat=lazy(()=>import('../src/pages/chat/Chat'))
+import Chat from "../src/pages/chat/Chat.jsx"
 
 
 
@@ -97,7 +98,7 @@ function App() {
         <Route path='/userProfile' element={userToken&&userId?<Profile/>:<Navigate to={'/userLogin'} />}/>
         <Route path="/ventureList" element={<VentureList/>}/>
         <Route path="/ventureDetails/:id" element={<VentureDetails/>}/>
-        <Route path="/chats" element={userToken&&userId? <Suspense ><Chat/></Suspense> :<Navigate to={'/userlogin'}/>} />
+        <Route path="/chats" element={userToken&&userId? <Chat/> :<Navigate to={'/userlogin'}/>} />
         <Route path="/ventureList/:country" element={<VentureList/>}/>
         <Route path="/about" element={<About/>}/>
         <Route path="/contact" element={<Contact/>}/>
@@ -109,7 +110,7 @@ function App() {
          <Route path="/venture/login" element={ventureToken&&ventureId?<Navigate to={"/venture/dashboard"}/>:<VentureLogin/>}/>
          <Route path="/venture/dashboard" element={ ventureStatus==="pending"? <Navigate to={'/venture/pending'}/>:ventureStatus==="allowed" && ventureToken&&ventureId?<VentureDashbord/>:<Navigate to={'/venture/login'} />}/>
          <Route path="/venture/pending" element={ventureStatus==="pending"?<PendingVenture/>:<Navigate to={'/venture/dashboard'} />}/>
-         <Route path="/venture/chats" element={ventureId&&ventureToken? <Suspense ><Chat roll={"venture"} /></Suspense> :<Navigate to={'/venture/login'} />}/>
+         <Route path="/venture/chats" element={ventureId&&ventureToken? <Chat roll={"venture"} /> :<Navigate to={'/venture/login'} />}/>
          <Route path="/venture/users" element={ventureId&&ventureToken ? <Users/>:<VentureLogin/>}/>
          <Route path="/venture/userDetails/:userId" element={ventureId&&ventureToken ? <UserDetails/>:<VentureLogin/>}/>
          <Route path="/venture/profile" element={ventureId&&ventureToken ? <VentureProfile/>:<VentureLogin/>}/>

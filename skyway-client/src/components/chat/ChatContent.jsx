@@ -154,7 +154,7 @@ const ChatContent = ({ roll,socket }) => {
                 <div className="h-1/6 w-full  flex bg-secondory">
                     <div className="w-2/12 flex flex-wrap justify-center items-center ">
                         <div className="h-5/6  w-3/5 rounded-full overflow-hidden">
-                            <img src={roll==="venture"? data.oppsitePersonData.profile_image:data.oppsitePersonData?.logo ??`/temp/venture-contact-dp.png`} className="h-full w-full" alt="Venture_Contact_Image" />
+                            <img src={roll==="venture"? data.oppsitePersonData.profile_image??`/user-avatar.jpg`:data.oppsitePersonData?.logo ??`/user-avatar.jpg`} className="h-full w-full" alt="Venture_Contact_Image" />
                         </div>
                     </div>
                     <div className="w-10/12  h-full">
