@@ -10,7 +10,7 @@ const ConnectedVentureTable = ({ data }) => {
         { label: 'Venture Name ' },
         { label: 'Your status ' },
         { label: 'Service status ' },
-        { label: 'Payment' },
+        { label: 'Connect' },
     ]
 
 
