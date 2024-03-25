@@ -5,6 +5,9 @@ const connection=(mongo_uri)=>{
 
     mongoose.connect(mongo_uri)
 
+    // mongoose.set("debug",true)
+
+
     mongoose.connection.once("open",()=>{
 
         console.log('mongodb connection success')
