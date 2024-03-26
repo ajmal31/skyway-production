@@ -15,17 +15,27 @@ const consumer = async () => {
                 const existDoc = await findChater(message._id)
                 //check whether Document already Exist or not
                 if (existDoc) {
-                    return channel.ack(data)
+                    channel.ack(data)
+                    return ''
+                } else {
+                    const response = await insertChatersDetails(message)
+                    channel.ack(data)
+                    return ''
+
                 }
-                const response = await insertChatersDetails(message)
-                return channel.ack(data)
 
 
-            }else if(message?.method==="update-profile"){
-                console.log("messag",message.value)
+
+            } else if (message?.method === "update-profile") {
+                console.log("message", message.value)
+                channel.ack(data)
                 return ''
+            } else {
+                channel.ack(data)
+                return ''
+
             }
-            channel.ack(data)
+
 
         }
         else console.log('chat service while consuming data not found')

@@ -13,7 +13,6 @@ const socketConfguration = (server: any) => {
             origin: "*",
         }
     })
-console.log("what about in backend socket server",io)
     //connection establishing
     io.on('connection', (socket: any) => {
 
@@ -52,11 +51,11 @@ console.log("what about in backend socket server",io)
         })
 
         //typing idicator
-        socket.on("typing", (chatId: string) => {
+        // socket.on("typing", (chatId: string) => {
 
-            console.log('server side typing event occured', chatId)
-            socket.to(chatId).emit("typing")
-        })
+        //     console.log('server side typing event occured', chatId)
+        //     socket.to(chatId).emit("typing")
+        // })
 
         socket.on('joinRoom', (chatId: string) => {
             console.log('receive join room event')

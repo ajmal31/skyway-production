@@ -1,10 +1,8 @@
 import mongoose from "mongoose"
 const connection=(mongo_uri)=>{
 
-   
-
     mongoose.connect(mongo_uri)
-
+      
     // mongoose.set("debug",true)
 
 
