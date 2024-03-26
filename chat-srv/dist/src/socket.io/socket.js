@@ -6,12 +6,11 @@ const chatHelper_1 = require("../Helper/chatHelper");
 const socketConfguration = (server) => {
     //create server instance of socket.io
     const io = new socket_io_1.Server(server, {
-        // pingTimeout:60000,
+        pingTimeout: 60000,
         cors: {
             origin: "*",
         }
     });
-    console.log("what about in backend socket server", io);
     //connection establishing
     io.on('connection', (socket) => {
         console.log('connection established succesful', socket.id);
@@ -36,10 +35,10 @@ const socketConfguration = (server) => {
             }
         });
         //typing idicator
-        socket.on("typing", (chatId) => {
-            console.log('server side typing event occured', chatId);
-            socket.to(chatId).emit("typing");
-        });
+        // socket.on("typing", (chatId: string) => {
+        //     console.log('server side typing event occured', chatId)
+        //     socket.to(chatId).emit("typing")
+        // })
         socket.on('joinRoom', (chatId) => {
             console.log('receive join room event');
             console.log(`joined a particular rooom${chatId}`);
