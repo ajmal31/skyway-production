@@ -16,16 +16,16 @@
 
 # EXPOSE 80
 
-# FROM node:18-alpine
+FROM node:18-alpine
 
-# WORKDIR /app
+WORKDIR /app
 
-# COPY package.json ./
+COPY package.json ./
 
-# RUN npm install
+RUN npm install
 
-# COPY . .
+COPY . .
 
-# ENV PORT = 5173
+ENV PORT = 5173
 
-# CMD ["npm","run","dev"]
+CMD ["npm","run","dev"]
