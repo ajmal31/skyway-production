@@ -5,7 +5,7 @@ import ventureAxiosInstance from './Axios/interceptors/venture/reqInterceptor.js
 import axios from 'axios'
 
 
-//async thunk redux toolkit this will be handle 
+//async thunk redux toolkit this will be handle
 export const fetchData=createAsyncThunk('fetchData',async(obj)=>{
     try{ 
         const url=obj?.url

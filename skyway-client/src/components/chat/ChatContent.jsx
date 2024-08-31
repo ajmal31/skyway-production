@@ -14,7 +14,7 @@ import { changeCount } from "../../redux/slices/chatSlice";
 //socket port spectification
 // const socket = io(CHAT_SRV_SOCKET_URL);
 
-const ChatContent = ({ roll,socket }) => {
+const ChatContent = ({ roll, socket }) => {
 
     //taking userId from cookie
     const userId = cookie.get('userId');
@@ -32,6 +32,7 @@ const ChatContent = ({ roll,socket }) => {
     const [message, setMessage] = useState('');
     const [header, setHeader] = useState({})
     const scrollDownRef = useRef(null)
+    const [messageButton, setMessageButton] = useState(false)
 
     //scroll handler
     useEffect(() => {
@@ -97,17 +98,17 @@ const ChatContent = ({ roll,socket }) => {
         return response_chat?.payload?.data?._id
     };
 
-        socket.on('received', (data) => {
+    socket.on('received', (data) => {
 
-        
-            if (chatId === data?.chatId) {
-                setChat([...chat, data?.content])
-    
-            } 
-            return dispatch(changeCount(Math.random() * 1 * 10))
-    
-    
-        })
+
+        if (chatId === data?.chatId) {
+            setChat([...chat, data?.content])
+
+        }
+        return dispatch(changeCount(Math.random() * 1 * 10))
+
+
+    })
 
     let typingTimeout;
 
@@ -115,6 +116,7 @@ const ChatContent = ({ roll,socket }) => {
     const handleOnchange = (e) => {
 
         setMessage(e.target.value)
+
         // socket.emit("typing", chatId)
 
         // clearTimeout(typingTimeout)
@@ -126,8 +128,15 @@ const ChatContent = ({ roll,socket }) => {
 
     }
 
+    useEffect(() => {
+
+        if (message.length > 0) setMessageButton(true)
+        else setMessageButton(false)
+    }, [message])
+
     //Handling message
     const handleMessage = () => {
+        // if(message.length<0)
         let payload = {
             senderId: roll === "venture" ? ventureId : userId,
             receiverId: data?.oppsitePersonData?._id,
@@ -146,7 +155,7 @@ const ChatContent = ({ roll,socket }) => {
     };
 
 
-    if (!data.oppsitePersonData) return <EmptyChat  />
+    if (!data.oppsitePersonData) return <EmptyChat />
 
     return (
         <div className="bg-secondory h-full w-3/5 px-8  pb-14 pt-2 text-gray-300 rounded-xl">
@@ -154,7 +163,7 @@ const ChatContent = ({ roll,socket }) => {
                 <div className="h-1/6 w-full  flex bg-secondory">
                     <div className="w-2/12 flex flex-wrap justify-center items-center ">
                         <div className="h-5/6  w-3/5 rounded-full overflow-hidden">
-                            <img src={roll==="venture"? data.oppsitePersonData.profile_image??`/user-avatar.jpg`:data.oppsitePersonData?.logo ??`/user-avatar.jpg`} className="h-full w-full" alt="Venture_Contact_Image" />
+                            <img src={roll === "venture" ? data.oppsitePersonData.profile_image ?? `/user-avatar.jpg` : data.oppsitePersonData?.logo ?? `/user-avatar.jpg`} className="h-full w-full" alt="Venture_Contact_Image" />
                         </div>
                     </div>
                     <div className="w-10/12  h-full">
@@ -177,15 +186,16 @@ const ChatContent = ({ roll,socket }) => {
                     <div className="flex w-full items-end justify-end  ">
                         <div className="w-full flex gap-2  ">
                             <input
-                                
-                                
+
+
                                 type="text"
                                 className="w-11/12 p-3  rounded-xl bg-transparent border border-gray-500 break-words"
                                 value={message}
                                 onChange={handleOnchange}
                                 placeholder="enter your message"
                             />
-                            <button className="w-1/12 bg-button rounded-full flex items-center justify-center p-3" onClick={handleMessage}><IoSend /></button>
+
+                            {messageButton ? <button className="w-1/12 bg-button rounded-full flex items-center justify-center p-3" onClick={handleMessage}><IoSend /></button> : ""}
                         </div>
                     </div>
                 </div>
