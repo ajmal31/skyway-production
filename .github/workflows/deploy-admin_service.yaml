@@ -24,6 +24,6 @@ jobs:
       - uses: digitalocean/action-doctl@v2
         with:
           token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN}}
-      - run: doctl kubernetes cluster kubeconfig save flywaywebsite
+      - run: doctl kubernetes cluster kubeconfig save ${{secrets.CLUSTER_NAME}}
       - run : kubectl rollout restart deployment admin-srv-deployment
       
