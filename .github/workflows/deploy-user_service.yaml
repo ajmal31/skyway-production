@@ -25,7 +25,7 @@ jobs:
       - uses: digitalocean/action-doctl@v2
         with:
           token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN}}
-      - run: doctl kubernetes cluster kubeconfig save skway-2-k8s
+      - run: doctl kubernetes cluster kubeconfig save ${{secrets.CLUSTER_NAME}}
       - run: kubectl rollout restart deployment user-srv-deployment
 
 
