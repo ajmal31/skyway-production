@@ -105,6 +105,7 @@ function App() {
         {/* <Route path="/otp" element={<Otp/>}/> */}
 
 
+
          {/* venture Routes */}
          <Route path="/venture/register" element={ventureToken&&ventureId?<Navigate to={"/venture/dashboard"}/>:<VentureRegister/>}/>
          <Route path="/venture/login" element={ventureToken&&ventureId?<Navigate to={"/venture/dashboard"}/>:<VentureLogin/>}/>
