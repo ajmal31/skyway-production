@@ -26,6 +26,13 @@ RUN npm install
 
 COPY . .
 
-ENV PORT = 5173
+RUN npm run build
 
-CMD ["npm","run","dev"]
+# Use a lightweight server for the production image
+FROM nginx:stable-alpine
+
+# Copy the build output from the previous stage to Nginx's html directory
+COPY --from=build /app/dist /usr/share/nginx/html
+
+# Expose the desired port
+EXPOSE 80
