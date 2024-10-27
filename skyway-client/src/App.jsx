@@ -102,8 +102,6 @@ function App() {
         <Route path="/ventureList/:country" element={<VentureList/>}/>
         <Route path="/about" element={<About/>}/>
         <Route path="/contact" element={<Contact/>}/>
-        {/* <Route path="/otp" element={<Otp/>}/> */}
-
 
 
          {/* venture Routes */}
